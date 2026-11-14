@@ -1,0 +1,49 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Compiled / logs
+*.class
+*.log
+*.ctxt
+hs_err_pid*
+replay_pid*
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+.sts4-cache
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment / local config
+.env
+.env.*
+!.env.example
+application-local.yml
+application-local.properties
+
+# Docker/local data (if created locally)
+*.pid
