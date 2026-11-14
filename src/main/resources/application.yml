@@ -30,7 +30,7 @@ spring:
 
 app:
   jwt:
-    secret: "change-this-secret-key-to-a-very-long-random-string-at-least-64-bytes-for-hs512-change-me"
+    secret: "otunctan2026ATXSCYas21334SECRETKEYotunctan2026ATXSCYas21334SECRETKEYotunctan2026ATXSCYas21334SECRETKEY"
     access-token-expiration-ms: 900000      # 15 minutes
     refresh-token-expiration-ms: 604800000  # 7 days
 
