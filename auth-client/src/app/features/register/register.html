@@ -1,0 +1,66 @@
+<div class="card">
+  <h1>Kayıt Ol</h1>
+
+  @if (error()) {
+    <div class="alert alert-error">{{ error() }}</div>
+  }
+  @if (success()) {
+    <div class="alert alert-success">{{ success() }}</div>
+  }
+
+  <form [formRoot]="registerForm" (submit)="submit(); $event.preventDefault()">
+    <label>
+      Kullanıcı Adı
+      <input
+        type="text"
+        [formField]="registerForm.username"
+        placeholder="kullanıcı adı"
+        autocomplete="username"
+      />
+      <app-form-errors [field]="registerForm.username" />
+    </label>
+
+    <label>
+      E-posta
+      <input
+        type="email"
+        [formField]="registerForm.email"
+        placeholder="ornek@mail.com"
+        autocomplete="email"
+      />
+      <app-form-errors [field]="registerForm.email" />
+    </label>
+
+    <label>
+      Şifre
+      <input
+        type="password"
+        [formField]="registerForm.password"
+        placeholder="••••••"
+        autocomplete="new-password"
+      />
+      <app-form-errors [field]="registerForm.password" />
+    </label>
+
+    <label>
+      Şifre Tekrar
+      <input
+        type="password"
+        [formField]="registerForm.confirmPassword"
+        placeholder="••••••"
+        autocomplete="new-password"
+      />
+      <app-form-errors [field]="registerForm.confirmPassword" />
+      <!-- cross-field validateTree hatası root'ta toplanır -->
+      <app-form-errors [field]="registerForm" [force]="true" />
+    </label>
+
+    <button type="submit" [disabled]="loading() || !!success()">
+      {{ loading() ? 'Kayıt yapılıyor…' : 'Kayıt Ol' }}
+    </button>
+  </form>
+
+  <p class="alt">
+    Zaten hesabın var mı? <a routerLink="/login">Giriş yap</a>
+  </p>
+</div>

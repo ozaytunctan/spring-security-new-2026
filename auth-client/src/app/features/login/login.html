@@ -1,0 +1,39 @@
+<div class="card">
+  <h1>Giriş Yap</h1>
+
+  @if (error()) {
+    <div class="alert alert-error">{{ error() }}</div>
+  }
+
+  <form [formRoot]="loginForm" (submit)="submit(); $event.preventDefault()">
+    <label>
+      Kullanıcı Adı
+      <input
+        type="text"
+        [formField]="loginForm.username"
+        placeholder="kullanıcı adı"
+        autocomplete="username"
+      />
+      <app-form-errors [field]="loginForm.username" />
+    </label>
+
+    <label>
+      Şifre
+      <input
+        type="password"
+        [formField]="loginForm.password"
+        placeholder="••••••"
+        autocomplete="current-password"
+      />
+      <app-form-errors [field]="loginForm.password" />
+    </label>
+
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Giriş yapılıyor…' : 'Giriş Yap' }}
+    </button>
+  </form>
+
+  <p class="alt">
+    Hesabın yok mu? <a routerLink="/register">Kayıt ol</a>
+  </p>
+</div>

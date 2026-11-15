@@ -94,10 +94,10 @@ Refresh token rotation uygulanır (eski token revoke edilir, yenisi üretilir).
 
 ### Korumalı örnek endpointler
 
-- `GET /api/demo/profile` — kimliği doğrulanmış herkes
-- `GET /api/demo/user` — `ROLE_USER`
-- `GET /api/demo/admin` — `ROLE_ADMIN`
-- `GET /api/demo/todo/write` — `TODO_WRITE` authority
+- `GET /api/v1/demo/profile` — kimliği doğrulanmış herkes
+- `GET /api/v1/demo/user` — `ROLE_USER`
+- `GET /api/v1/demo/admin` — `ROLE_ADMIN`
+- `GET /api/v1/demo/todo/write` — `TODO_WRITE` authority
 
 Authorization header: `Authorization: Bearer <accessToken>`
 

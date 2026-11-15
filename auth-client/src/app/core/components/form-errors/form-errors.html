@@ -1,0 +1,5 @@
+@if (field()().touched() || force()) {
+  @for (err of field()().errors(); track $index) {
+    <span class="field-error">{{ err.message ?? err.kind }}</span>
+  }
+}

@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Get user
-GET http://localhost:8080/api/demo/user
+GET http://localhost:8080/api/v1/demo/user
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvdHVuY3RhbiIsImlhdCI6MTc5NDY4MzY3NiwiZXhwIjoxNzk0Njg0NTc2fQ.dvBYifo2-1jqOTUxm0oFYCTQ_XQXZzxzTtz-Dgo_Bj9tMxvHhjVKxLjuWbeqVQnxtHeoaekp-LLLFHHRoBgPJA
 
 ### POST Logout request

@@ -1,0 +1,67 @@
+<div class="page">
+  <header class="bar">
+    <div>
+      <strong>Merhaba, {{ username() }} 👋</strong>
+      <span class="roles">
+        Roller:
+        @for (r of roles(); track r) {
+          <span class="badge">{{ r }}</span>
+        } @empty {
+          <span class="badge">yok</span>
+        }
+      </span>
+    </div>
+    <button class="logout" (click)="logout()">Çıkış Yap</button>
+  </header>
+
+  <section class="card">
+    <h2>🛡️ Korunan Endpoint'ler</h2>
+    <p class="hint">
+      Token'ı <code>authInterceptor</code> ekler. Süresi dolarsa
+      <code>refreshInterceptor</code> otomatik yeniler.
+    </p>
+
+    <div class="actions">
+      <button (click)="callAll()" [disabled]="loading()">Tümünü Çağır</button>
+      <button class="ghost" (click)="callEndpoint('/api/v1/demo/profile')">profile</button>
+      <button class="ghost" (click)="callEndpoint('/api/v1/demo/user')">user</button>
+      <button class="ghost" (click)="callEndpoint('/api/v1/demo/admin')">admin</button>
+    </div>
+
+    <!-- *appHasRole / *appHasAuthority örnekleri -->
+    <div class="directives-demo">
+      <h3>Directive gösterimi</h3>
+
+      <p *appHasRole="'USER'">👤 Bu satır yalnızca <b>ROLE_USER</b> sahibine görünür.</p>
+      <p *appHasRole="'ADMIN'">🛡️ Bu satır yalnızca <b>ROLE_ADMIN</b> sahibine görünür.</p>
+      <p *appHasRole="['ADMIN', 'USER']">👥 Bu satır <b>ADMIN veya USER</b> rolüne görünür.</p>
+
+      <button *appHasAuthority="'TODO_WRITE'" class="todo-write">
+        ✏️ Todo Ekle (TODO_WRITE varsa)
+      </button>
+      <p class="muted" *appHasRole="'ADMIN'">
+        🎉 Admin sees this only — authority yoksa buton gizlenir.
+      </p>
+    </div>
+
+    @if (results().length) {
+      <ul class="results">
+        @for (r of results(); track r.endpoint) {
+          <li>
+            <span
+              class="status"
+              [class.ok]="r.status === 200"
+              [class.bad]="r.status !== 200"
+            >
+              {{ r.status }}
+            </span>
+            <code>{{ r.endpoint }}</code>
+            <pre>{{ r.body | json }}</pre>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="empty">Henüz çağrı yapılmadı.</p>
+    }
+  </section>
+</div>
